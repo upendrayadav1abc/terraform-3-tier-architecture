@@ -138,7 +138,7 @@ resource "aws_instance" "webserver1" {
   ami                    = "ami-0d5eff06f840b45e9"
   instance_type          = "t2.micro"
   availability_zone      = "us-east-1a"
-  key_name               = "rahull"
+  key_name               = "all"
   vpc_security_group_ids = [aws_security_group.webserver-sg.id]
   subnet_id              = aws_subnet.web-subnet-1.id
   user_data              = "${file("apache.sh")}"
@@ -152,7 +152,7 @@ resource "aws_instance" "webserver2" {
   ami                    = "ami-0d5eff06f840b45e9"
   instance_type          = "t2.micro"
   availability_zone      = "us-east-1b"
-  key_name               = "rahull"
+  key_name               = "all"
   vpc_security_group_ids = [aws_security_group.webserver-sg.id]
   subnet_id              = aws_subnet.web-subnet-2.id
   user_data              = "${file("apache.sh")}"
@@ -167,7 +167,7 @@ resource "aws_instance" "appserver1" {
   ami                    = "ami-0d5eff06f840b45e9"
   instance_type          = "t2.micro"
   availability_zone      = "us-east-1a"
-  key_name               = "rahull"
+  key_name               = "all"
   vpc_security_group_ids = [aws_security_group.appserver-sg.id]
   subnet_id              = aws_subnet.application-subnet-1.id
   tags = {
@@ -179,7 +179,7 @@ resource "aws_instance" "appserver2" {
   ami                    = "ami-0d5eff06f840b45e9"
   instance_type          = "t2.micro"
   availability_zone      = "us-east-1b"
-  key_name               = "rahull"
+  key_name               = "all"
   vpc_security_group_ids = [aws_security_group.appserver-sg.id]
   subnet_id              = aws_subnet.application-subnet-2.id
 
@@ -188,7 +188,7 @@ resource "aws_instance" "appserver2" {
   }
 }
 
-resource "aws_db_instance" "default" {
+/*resource "aws_db_instance" "default" {
   allocated_storage    = 10
   db_name              = "mydb"
   engine               = "mysql"
@@ -206,7 +206,7 @@ resource "aws_db_subnet_group" "default" {
   tags = {
     Name = "My DB subnet group"
   }
-}
+}*/
 
 
 # Create Web Security Group
@@ -277,7 +277,7 @@ resource "aws_security_group" "appserver-sg" {
 }
 
 # Create Database Security Group
-resource "aws_security_group" "database-sg" {
+/*resource "aws_security_group" "database-sg" {
   name        = "Database-SG"
   description = "Allow inbound traffic from application layer"
   vpc_id      = aws_vpc.my-vpc.id
@@ -379,4 +379,4 @@ default = ["userone", "usertwo", "userthree", "userfour"]
 
 resource "aws_iam_group" "two" {
 name = "devopswithawsbyrahamshaik"
-}
+}*/
